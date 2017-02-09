@@ -146,6 +146,7 @@ Ball.Game.prototype = {
   registraDireccion: function(datosAceleracion){
     Ball._VELOCIDADX = datosAceleracion.x ;
     Ball._VELOCIDADY = datosAceleracion.y ;
+     navigator.notification.alert("velocidadY " + Ball._VELOCIDADY);
   }
 
 
