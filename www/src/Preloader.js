@@ -31,7 +31,7 @@ Ball.Preloader.prototype = {
 if ('addEventListener' in document) {
 		    document.addEventListener('deviceready', function() {
         	Ball._DISPOSITIVO=true;
-        	alert("en preload");
+        	alert("El dispisitivo está listo");
 			}, false);
    		
 	}

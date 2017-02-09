@@ -2,7 +2,6 @@
 Ball.Game = function(game) {};
 Ball.Game.prototype = {
 
-
 	create: function() {
 
 		this.taponCaido=false;
@@ -46,16 +45,16 @@ Ball.Game.prototype = {
 
 	//UPDATE *********************************************************************************************
 	update: function() {
-		this.ball.body.velocity.y += 0.5; //this.velocidadY; //this.movementForce;
+
+		var factorDificultad = (300 + (2 * 100));
+        this.ball.body.velocity.y = (Ball._VELOCIDADY * factorDificultad);
+        this.ball.body.velocity.x = (Ball._VELOCIDADX * (-1 * factorDificultad));
+
+		//this.ball.body.velocity.y += 0.5; //this.velocidadY; //this.movementForce;
 		//this.ball.body.velocity.x +=(3 * (+1)); ; //this.movementForce;
 		this.physics.arcade.collide(this.ball, this.borderGroup, this.wallCollision, null, this);
 		//alert(velocidadX);
-		if(this.taponCaido==true) {
-			this.ball1.body.velocity.y += 0.5; //this.velocidadY; //this.movementForce;
-		//this.ball.body.velocity.x +=(3 * (+1)); ; //this.movementForce;
-		this.physics.arcade.collide(this.ball1, this.borderGroup, this.wallCollision, null, this);
-
-		};
+		
 		
 	},
 	//****************************************************************************************************
@@ -114,8 +113,47 @@ Ball.Game.prototype = {
 	girarTapon: function() {
 		this.ball.angle+=90;
 		if(this.taponCaido)  this.ball1.angle+=90;
-	}
+	},
+
+	//****************************************************
+	 vigilaSensores: function(){
+    
+    function onError() {
+        console.log('onError!');
+    }
+
+    function onSuccess(datosAceleracion){
+      app.detectaAgitacion(datosAceleracion);
+      app.registraDireccion(datosAceleracion);
+    }
+
+    navigator.accelerometer.watchAcceleration(onSuccess, onError,{ frequency: 10 });
+  },
+
+  detectaAgitacion: function(datosAceleracion){
+    var agitacionX = datosAceleracion.x > 10;
+    var agitacionY = datosAceleracion.y > 10;
+
+    if (agitacionX || agitacionY){
+      setTimeout(this.recomienza, 1000);
+    }
+  },
+
+  recomienza: function(){
+    document.location.reload(true);
+  },
+
+  registraDireccion: function(datosAceleracion){
+    Ball._VELOCIDADX = datosAceleracion.x ;
+    Ball._VELOCIDADY = datosAceleracion.y ;
+  }
+
 
 };
+
+if (Ball._DISPOSITIVO) {
+	Game.vigilaSensores();
+}
+
 
 
