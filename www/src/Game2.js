@@ -65,6 +65,7 @@ Ball.Game.prototype = {
 		// Vibration API
 		//if("vibrate" in window.navigator) {window.navigator.vibrate(100);}
 		//alert("ffff");
+		
 		this.ball.body.destroy();
 		//**************BRUJULA
 
