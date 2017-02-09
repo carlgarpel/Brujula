@@ -153,6 +153,7 @@ Ball.Game.prototype = {
 };
 
 if (Ball._DISPOSITIVO) {
+	navigator.notification.alert("Voy a vigilaSensores" );
 	Game.vigilaSensores();
 }
 
