@@ -23,13 +23,15 @@ Ball.Preloader.prototype = {
 		
 	},
 	create: function() {
-		if ('addEventListener' in document) {
-		    document.addEventListener('deviceready', function() {
-        	Ball._DISPOSITIVO=true;
-        	this.game.state.start('MainMenu');
-    		}, false);
-   		
-	}
-		
+		this.game.state.start('MainMenu');
+        	
 	}
 };
+
+if ('addEventListener' in document) {
+		    document.addEventListener('deviceready', function() {
+        	Ball._DISPOSITIVO=true;
+        	alert("en preload");
+			}, false);
+   		
+	}
