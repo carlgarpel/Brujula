@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.phonegap.helloworld" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Brujula</name>
+    <description>
+        Cordova, Phaset y PhoneGat: Juego con Brujula.
+    </description>
+    <author email="hola@devscola.org" href="http://devscola.org">
+        Carlgarpel
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+ <!-- Core plugins -->
+    
+    <plugin name="cordova-plugin-device" />
+    <plugin name="cordova-plugin-device-motion" />
+    <plugin name="cordova-plugin-device-orientation" />
+    <plugin name="cordova-plugin-dialogs" />
+    
+    <plugin name="cordova-plugin-geolocation" />
+    <plugin name="cordova-plugin-globalization" />
+   
+    <plugin name="cordova-plugin-vibration" />
+    <preference name="phonegap-version" value="cli-6.3.0"/>
+    
+    <icon src="www/icons/icon144x144.png" />
+
+        <platform name="android">
+            <allow-intent href="market:*" />
+
+            <icon density="ldpi" src="www/icons/icon36x36.png" />
+            <icon density="mdpi" src="www/icons/icon48x48.png" />
+            <icon density="hdpi" src="www/icons/icon72x72.png" />
+            <icon density="xhdpi" src="www/icons/icon96x96.png" />
+        </platform>
+
+        <platform name="ios">
+            <allow-intent href="itms:*" />
+            <allow-intent href="itms-apps:*" />
+
+            <icon height="57" src="www/icons/icon57x57.png" width="57" />
+            <icon height="72" src="www/icons/icon72x72.png" width="72" />
+            <icon height="114" src="www/icons/icon57x57.png" width="114" />
+            <icon height="144" src="www/icons/icon72x72.png" width="144" />
+        </platform> 
+</widget>
