@@ -18,7 +18,7 @@ Ball.Game.prototype = {
 		this.ball.anchor.set(0.5);
 		this.physics.enable(this.ball, Phaser.Physics.ARCADE);
 
- 		this.game.physics.arcade.enable(ball);
+ 		this.game.physics.arcade.enable(this.ball);
 
 		this.ball.body.gravity.x =  2;
 		this.ball.angle=90;
