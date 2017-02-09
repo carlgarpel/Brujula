@@ -123,8 +123,8 @@ Ball.Game.prototype = {
     }
 
     function onSuccess(datosAceleracion){
-      app.detectaAgitacion(datosAceleracion);
-      app.registraDireccion(datosAceleracion);
+      this	.detectaAgitacion(datosAceleracion);
+      this.registraDireccion(datosAceleracion);
     }
 
     navigator.accelerometer.watchAcceleration(onSuccess, onError,{ frequency: 10 });
