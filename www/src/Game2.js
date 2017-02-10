@@ -60,15 +60,15 @@ Ball.Game.prototype = {
 	//UPDATE *********************************************************************************************
 	update: function() {
 
-		var factorDificultad = 300 // (10 + (1 * 100));
+		var factorDificultad = 150 // (10 + (1 * 100));
         //this.ball.body.velocity.y = (Ball._VELOCIDADY * factorDificultad);
         this.ball.body.velocity.x = Ball._VELOCIDADX * (-1 ) * factorDificultad;
 
 	    this.ball.body.velocity.y += 0.5; //this.velocidadY; //this.movementForce;
-		//this.ball.body.velocity.x +=(3 * (+1)); ; //this.movementForce;
-		this.physics.arcade.collide(this.ball, this.borderGroup, this.wallCollision, null, this);
-		//alert(velocidadX);
-		//alert("Update");
+		
+
+	    	// COLISIONES
+		//this.physics.arcade.collide(this.ball, this.borderGroup, this.wallCollision, null, this);
 		
 	},
 	//****************************************************************************************************
