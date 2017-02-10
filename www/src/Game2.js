@@ -63,7 +63,7 @@ Ball.Game.prototype = {
         //this.ball.body.velocity.y = (Ball._VELOCIDADY * factorDificultad);
         this.ball.body.velocity.x += (Ball._VELOCIDADX * (-1 * factorDificultad));
 
-		this.ball.body.velocity.y += 0.5; //this.velocidadY; //this.movementForce;
+		//this.ball.body.velocity.y += 0.5; //this.velocidadY; //this.movementForce;
 		//this.ball.body.velocity.x +=(3 * (+1)); ; //this.movementForce;
 		this.physics.arcade.collide(this.ball, this.borderGroup, this.wallCollision, null, this);
 		//alert(velocidadX);
@@ -77,7 +77,7 @@ Ball.Game.prototype = {
 		//if("vibrate" in window.navigator) {window.navigator.vibrate(100);}
 		//alert("ffff");
 		
-		//this.ball.body.destroy();
+		this.ball.body.destroy();
 		//**************BRUJULA
 
 
@@ -132,20 +132,7 @@ Ball.Game.prototype = {
 	},
 
 	//****************************************************
-	 vigilaSensores: function(){
-    
- /*   function onError() {
-        console.log('onError!');
-        //alert ("onError");
-    }
-
-    function onSuccess(datosAceleracion){
-     // this.detectaAgitacion(datosAceleracion);
-      this.registraDireccion(datosAceleracion);
-    }*/	
-     navigator.notification.alert("hay acelerometro");
-     //navigator.accelerometer.watchAcceleration(onSuccess, onError,{ frequency: 10 });
-  },
+	
 
   detectaAgitacion: function(datosAceleracion){
     var agitacionX = datosAceleracion.x > 10;
@@ -181,12 +168,25 @@ Ball.Game.prototype = {
 		    document.addEventListener('deviceready', function() {
    	     		Ball._DISPOSITIVO=true;
         		alert("El dispisitivo está listo");
-
+        		vigilaSensores();
         		
         		
         		
 				}, false);
    		};
    			
+  function vigilaSensores(){
+    
+   function onError() {
+        console.log('onError!');
+        //alert ("onError");
+    }
 
+    function onSuccess(datosAceleracion){
+     // this.detectaAgitacion(datosAceleracion);
+      this.registraDireccion(datosAceleracion);
+    }	
+     navigator.notification.alert("hay acelerometro");
+     navigator.accelerometer.watchAcceleration(onSuccess, onError,{ frequency: 10 });
+  };
 
