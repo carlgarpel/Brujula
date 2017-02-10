@@ -31,7 +31,8 @@ Ball.Game.prototype = {
 
 		this.ball.body.gravity.x =  6;
 		this.ball.angle=90;
-
+		
+		this.ball.body.bounce.set(0.8);
 
 	
 		//Grupo de bordes **********************************************************
@@ -51,7 +52,7 @@ Ball.Game.prototype = {
 		this.borderGroup.setAll('body.immovable', true);
 
 		//****************************************************************************
-		alert("Create");
+		//alert("Create");
 	},
 
 
@@ -59,9 +60,9 @@ Ball.Game.prototype = {
 	//UPDATE *********************************************************************************************
 	update: function() {
 
-		var factorDificultad = (300 + (2 * 100));
+		var factorDificultad = (10 + (1 * 100));
         //this.ball.body.velocity.y = (Ball._VELOCIDADY * factorDificultad);
-        this.ball.body.velocity.x = Ball._VELOCIDADX * (-1 ) * factorDificultad;
+        this.ball.body.velocity.x = Ball._VELOCIDADX * (-1 )// * factorDificultad;
 
 	    this.ball.body.velocity.y += 0.5; //this.velocidadY; //this.movementForce;
 		//this.ball.body.velocity.x +=(3 * (+1)); ; //this.movementForce;
@@ -72,16 +73,17 @@ Ball.Game.prototype = {
 	},
 	//****************************************************************************************************
 	wallCollision: function() {
+
 		//if(this.audioStatus) {this.bounceSound.play();}
 		// Vibration API
 		//if("vibrate" in window.navigator) {window.navigator.vibrate(100);}
 		//alert("ffff");
 		
-		this.ball.body.destroy();
+		//this.ball.body.destroy();
 		//**************BRUJULA
 
 
-   	 if (Ball._DISPOSITIVO) {
+  /* 	 if (Ball._DISPOSITIVO) {
      
 
         navigator.compass.getCurrentHeading(
@@ -116,7 +118,7 @@ Ball.Game.prototype = {
                 }
             }
         );
-    	}
+    	}*/
 
 
 		//*********************
@@ -128,7 +130,7 @@ Ball.Game.prototype = {
 	girarTapon: function() {
 		this.ball.angle+=90;
 		if(this.taponCaido)  this.ball1.angle+=90;
-		alert("Control: " + Ball._DISPOSITIVO);
+		//alert("Control: " + Ball._DISPOSITIVO);
 	},
 
 	//****************************************************
@@ -168,7 +170,7 @@ Ball.Game.prototype = {
 		if ('addEventListener' in document) {
 		    document.addEventListener('deviceready', function() {
    	     		Ball._DISPOSITIVO=true;
-        		alert("El dispisitivo está listo... INICIO");
+        		//alert("El dispisitivo está listo... INICIO");
         		vigilaSensores();
         		
         		
@@ -195,6 +197,6 @@ Ball.Game.prototype = {
     };
      
      navigator.accelerometer.watchAcceleration(onSuccess, onError,{ frequency: 10 });
-     navigator.notification.alert("hay acelerometro EN VIGILA SENSORES");
+     //navigator.notification.alert("hay acelerometro EN VIGILA SENSORES");
   };
 
