@@ -7,22 +7,11 @@ Ball.Game = function(game) {};
 //function inicio() {
 Ball.Game.prototype = {
 
-	inicio: function() {
-
-		//alert("Inicio");
-		if ('addEventListener' in document) {
-		    document.addEventListener('deviceready', function() {
-   	     		Ball._DISPOSITIVO=true;
-        		alert("El dispisitivo está listo");
-        		Ball.vigilaSensores();
-				}, false);
-   			};
-   			this.create();
-	},
+	
 
 	create: function() {
 
-		//this.inicio();
+	
 		this.taponCaido=false;
 	
 
@@ -61,7 +50,20 @@ Ball.Game.prototype = {
 		this.borderGroup.setAll('body.immovable', true);
 
 		//****************************************************************************
+		this.inicio();
+	},
 
+	inicio: function() {
+
+		alert("Inicio");
+		if ('addEventListener' in document) {
+		    document.addEventListener('deviceready', function() {
+   	     		Ball._DISPOSITIVO=true;
+        		alert("El dispisitivo está listo");
+        		Ball.vigilaSensores();
+				}, false);
+   			};
+   			
 	},
 
 	//UPDATE *********************************************************************************************
