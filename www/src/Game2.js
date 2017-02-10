@@ -149,7 +149,7 @@ Ball.Game.prototype = {
     }
 
     function onSuccess(datosAceleracion){
-      this.detectaAgitacion(datosAceleracion);
+     // this.detectaAgitacion(datosAceleracion);
       this.registraDireccion(datosAceleracion);
     }
 
@@ -172,7 +172,7 @@ Ball.Game.prototype = {
   registraDireccion: function(datosAceleracion){
     Ball._VELOCIDADX = datosAceleracion.x ;
     Ball._VELOCIDADY = datosAceleracion.y ;
-     navigator.notification.alert("velocidadY " + Ball._VELOCIDADY);
+    // navigator.notification.alert("velocidadY " + Ball._VELOCIDADY);
   }
 
 
