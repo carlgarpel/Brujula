@@ -154,7 +154,7 @@ Ball.Game.prototype = {
      // this.detectaAgitacion(datosAceleracion);
       this.registraDireccion(datosAceleracion);
     }
-
+     navigator.notification.alert("hay acelerometro");
     navigator.accelerometer.watchAcceleration(onSuccess, onError,{ frequency: 10 });
   },
 
