@@ -101,7 +101,16 @@ Ball.Game.prototype = {
         	this.recomienza();
         };
         ball.y = 10;
-       ball.angle = 90 * (Math.round(Math.random()*(5-1)+parseInt(1)));
+        var giros = Math.round(Math.random()*(5-1)+parseInt(1));
+        ball.angle = 90 * giros;
+ 
+        for (i = 0; i < giros; i++) { 
+    		 Ball._GIRO+=i;
+    		 if (Ball._GIRO > 4) Ball._GIRO = 1;
+
+		};
+
+        
 
 
     }
@@ -109,10 +118,20 @@ Ball.Game.prototype = {
 	},
 
 	finishLevel: function(ball) {
-		if (Ball._GIRO >= 4) {
+		if (Ball._GIRO = 4) {
 			ball.x = 10;
 		 	ball.y = 10;
-		 	ball.angle = 90 *(Math.round(Math.random()*(5-1)+parseInt(1)));
+		 	
+		 var giros = Math.round(Math.random()*(5-1)+parseInt(1));
+        ball.angle = 90 * giros;
+ 
+        for (i = 0; i < giros; i++) { 
+    		 Ball._GIRO+=i;
+    		 if (Ball._GIRO > 4) Ball._GIRO = 1;
+
+		};
+
+
 		 	this.hole.x +=  50;
 		 	Ball._CAIDAS+=1;
 		}
@@ -182,6 +201,7 @@ Ball.Game.prototype = {
 	girarTapon: function() {
 		this.ball.angle+=90;
 		Ball._GIRO += 1;
+		if (Ball._GIRO > 4) Ball._GIRO = 1;
 
 
 
