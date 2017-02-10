@@ -62,7 +62,7 @@ Ball.Game.prototype = {
 		    document.addEventListener('deviceready', function() {
    	     		Ball._DISPOSITIVO=true;
         		alert("El dispisitivo está listo");
-        		this.detectaAgitacion();
+        		this.registraDireccion();
 				}, false);
    			};
    			
@@ -171,9 +171,12 @@ Ball.Game.prototype = {
     document.location.reload(true);
   },
 
-  registraDireccion: function(datosAceleracion){
-    Ball._VELOCIDADX = datosAceleracion.x ;
-    Ball._VELOCIDADY = datosAceleracion.y ;
+  registraDireccion: function(){
+   /* Ball._VELOCIDADX = datosAceleracion.x ;
+    Ball._VELOCIDADY = datosAceleracion.y ;*/
+   Ball._VELOCIDADX = 30 ;
+  //  Ball._VELOCIDADY = datosAceleracion.y ;
+
     // navigator.notification.alert("velocidadY " + Ball._VELOCIDADY);
   }
 
