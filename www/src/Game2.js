@@ -9,18 +9,20 @@ Ball.Game.prototype = {
 
 	inicio: function() {
 
-		alert("Inicio");
+		//alert("Inicio");
 		if ('addEventListener' in document) {
 		    document.addEventListener('deviceready', function() {
    	     		Ball._DISPOSITIVO=true;
         		alert("El dispisitivo está listo");
         		Ball.vigilaSensores();
 				}, false);
-   			}
+   			};
+   			this.create();
 	},
+
 	create: function() {
 
-		this.inicio();
+		//this.inicio();
 		this.taponCaido=false;
 	
 
