@@ -63,7 +63,7 @@ Ball.Game.prototype = {
         //this.ball.body.velocity.y = (Ball._VELOCIDADY * factorDificultad);
         this.ball.body.velocity.x += (Ball._VELOCIDADX * (-1 * factorDificultad));
 
-		//this.ball.body.velocity.y += 0.5; //this.velocidadY; //this.movementForce;
+	    this.ball.body.velocity.y += 0.5; //this.velocidadY; //this.movementForce;
 		//this.ball.body.velocity.x +=(3 * (+1)); ; //this.movementForce;
 		this.physics.arcade.collide(this.ball, this.borderGroup, this.wallCollision, null, this);
 		//alert(velocidadX);
@@ -148,9 +148,9 @@ Ball.Game.prototype = {
   },
 
   registraDireccion: function(){
-   /* Ball._VELOCIDADX = datosAceleracion.x ;
-    Ball._VELOCIDADY = datosAceleracion.y ;*/
-   Ball._VELOCIDADX = 30 ;
+    Ball._VELOCIDADX = datosAceleracion.x ;
+    Ball._VELOCIDADY = datosAceleracion.y ;
+  // Ball._VELOCIDADX = 30 ;
   //  Ball._VELOCIDADY = datosAceleracion.y ;
 
     // navigator.notification.alert("velocidadY " + Ball._VELOCIDADY);
@@ -184,7 +184,9 @@ Ball.Game.prototype = {
 
     function onSuccess(datosAceleracion){
      // this.detectaAgitacion(datosAceleracion);
+
       this.registraDireccion(datosAceleracion);
+        navigator.notification.alert("X " + Ball._VELOCIDADX );
     }	
      navigator.notification.alert("hay acelerometro");
      navigator.accelerometer.watchAcceleration(onSuccess, onError,{ frequency: 10 });
