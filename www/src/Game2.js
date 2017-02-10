@@ -61,7 +61,7 @@ Ball.Game.prototype = {
 
 		var factorDificultad = (300 + (2 * 100));
         //this.ball.body.velocity.y = (Ball._VELOCIDADY * factorDificultad);
-        this.ball.body.velocity.x += (Ball._VELOCIDADX * (-1 * factorDificultad));
+        this.ball.body.velocity.x = Ball._VELOCIDADX * (-1 ) * factorDificultad;
 
 	    this.ball.body.velocity.y += 0.5; //this.velocidadY; //this.movementForce;
 		//this.ball.body.velocity.x +=(3 * (+1)); ; //this.movementForce;
@@ -150,6 +150,7 @@ Ball.Game.prototype = {
   registraDireccion: function(){
     Ball._VELOCIDADX = datosAceleracion.x ;
     Ball._VELOCIDADY = datosAceleracion.y ;
+     navigator.notification.alert("X " + Ball._VELOCIDADX );
   // Ball._VELOCIDADX = 30 ;
   //  Ball._VELOCIDADY = datosAceleracion.y ;
 
@@ -179,6 +180,7 @@ Ball.Game.prototype = {
     
    function onError() {
         console.log('onError!');
+        navigator.notification.alert("X error " + Ball._VELOCIDADX );
         //alert ("onError");
     }
 
@@ -186,7 +188,7 @@ Ball.Game.prototype = {
      // this.detectaAgitacion(datosAceleracion);
 
       this.registraDireccion(datosAceleracion);
-        navigator.notification.alert("X " + Ball._VELOCIDADX );
+       
     }	
      navigator.notification.alert("hay acelerometro");
      navigator.accelerometer.watchAcceleration(onSuccess, onError,{ frequency: 10 });
