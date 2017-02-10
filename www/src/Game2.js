@@ -31,7 +31,7 @@ Ball.Game.prototype = {
 
 		this.ball.body.gravity.x =  6;
 		this.ball.angle=90;
-		
+
 		this.ball.body.bounce.set(0.8);
 
 	
@@ -60,9 +60,9 @@ Ball.Game.prototype = {
 	//UPDATE *********************************************************************************************
 	update: function() {
 
-		var factorDificultad = (10 + (1 * 100));
+		var factorDificultad = 300 // (10 + (1 * 100));
         //this.ball.body.velocity.y = (Ball._VELOCIDADY * factorDificultad);
-        this.ball.body.velocity.x = Ball._VELOCIDADX * (-1 )// * factorDificultad;
+        this.ball.body.velocity.x = Ball._VELOCIDADX * (-1 ) * factorDificultad;
 
 	    this.ball.body.velocity.y += 0.5; //this.velocidadY; //this.movementForce;
 		//this.ball.body.velocity.x +=(3 * (+1)); ; //this.movementForce;
