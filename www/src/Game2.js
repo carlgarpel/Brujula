@@ -73,7 +73,7 @@ Ball.Game.prototype = {
 		//this.physics.arcade.collide(this.ball, this.borderGroup, this.wallCollision, null, this);
 		
 	},
-	checkPos: (ball) {
+	checkPos: function(ball) {
 
     if (ball.x > Ball._WIDTH-2)
     {
