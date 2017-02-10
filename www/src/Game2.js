@@ -51,22 +51,10 @@ Ball.Game.prototype = {
 		this.borderGroup.setAll('body.immovable', true);
 
 		//****************************************************************************
-		this.inicio();
+		//this.inicio();
 	},
 
-	inicio: function() {
 
-		alert("Inicio");
-
-		if ('addEventListener' in document) {
-		    document.addEventListener('deviceready', function() {
-   	     		Ball._DISPOSITIVO=true;
-        		alert("El dispisitivo está listo");
-        		this.registraDireccion();
-				}, false);
-   			};
-   			
-	},
 
 	//UPDATE *********************************************************************************************
 	update: function() {
@@ -134,6 +122,22 @@ Ball.Game.prototype = {
 		//*********************
 
 		
+	},
+	inicio: function() {
+
+		alert("Inicio");
+
+		if ('addEventListener' in document) {
+		    document.addEventListener('deviceready', function() {
+   	     		Ball._DISPOSITIVO=true;
+        		alert("El dispisitivo está listo");
+
+        		
+        		
+        		
+				}, false);
+   			};
+   			
 	},
 
 	girarTapon: function() {
