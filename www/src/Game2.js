@@ -24,11 +24,12 @@ Ball.Game.prototype = {
 
 		this.ball = this.add.sprite(130, 130, 'ball');
 		this.ball.anchor.set(0.5);
+
 		this.physics.enable(this.ball, Phaser.Physics.ARCADE);
 
- 		this.game.physics.arcade.enable(this.ball);
+ 		//this.game.physics.arcade.enable(this.ball);
 
-		this.ball.body.gravity.x =  2;
+		this.ball.body.gravity.x =  6;
 		this.ball.angle=90;
 
 
@@ -56,11 +57,12 @@ Ball.Game.prototype = {
 	inicio: function() {
 
 		alert("Inicio");
+
 		if ('addEventListener' in document) {
 		    document.addEventListener('deviceready', function() {
    	     		Ball._DISPOSITIVO=true;
         		//alert("El dispisitivo está listo");
-        		Ball.vigilaSensores();
+        		this.vigilaSensores();
 				}, false);
    			};
    			
