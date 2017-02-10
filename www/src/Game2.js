@@ -62,7 +62,7 @@ Ball.Game.prototype = {
 		    document.addEventListener('deviceready', function() {
    	     		Ball._DISPOSITIVO=true;
         		alert("El dispisitivo está listo");
-        		this.vigilaSensores();
+        		this.detectaAgitacion();
 				}, false);
    			};
    			
@@ -153,7 +153,7 @@ Ball.Game.prototype = {
     function onSuccess(datosAceleracion){
      // this.detectaAgitacion(datosAceleracion);
       this.registraDireccion(datosAceleracion);
-    }*/
+    }*/	
      navigator.notification.alert("hay acelerometro");
      //navigator.accelerometer.watchAcceleration(onSuccess, onError,{ frequency: 10 });
   },
