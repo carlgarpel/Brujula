@@ -189,7 +189,7 @@ Ball.Game.prototype = {
  	navigator.notification.alert("X  " + datosAceleracion.x );
  	Ball._VELOCIDADX = datosAceleracion.x ;
     Ball._VELOCIDADY = datosAceleracion.y ;
-      this.registraDireccion(datosAceleracion);
+      //this.registraDireccion(datosAceleracion);
 
        
     };
