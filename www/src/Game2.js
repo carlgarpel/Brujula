@@ -1,9 +1,26 @@
 //game-pruebas
 Ball.Game = function(game) {};
+
+
+	//Game.vigilaSensores(); 
+
+//function inicio() {
 Ball.Game.prototype = {
 
+	inicio: function() {
+
+		alert("Inicio");
+		if ('addEventListener' in document) {
+		    document.addEventListener('deviceready', function() {
+   	     		Ball._DISPOSITIVO=true;
+        		alert("El dispisitivo está listo");
+        		Ball.vigilaSensores();
+				}, false);
+   			}
+	},
 	create: function() {
 
+		this.inicio();
 		this.taponCaido=false;
 	
 
@@ -154,11 +171,4 @@ Ball.Game.prototype = {
 
 
 };
-
-if (Ball._DISPOSITIVO) {
-	navigator.notification.alert("Voy a vigilaSensores" );
-	Game.vigilaSensores();
-}
-
-
 
