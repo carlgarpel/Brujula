@@ -60,6 +60,8 @@ Ball.Game.prototype = {
 	//UPDATE *********************************************************************************************
 	update: function() {
 
+		ball.forEach(this.checkPos, this);
+
 		var factorDificultad = 150 // (10 + (1 * 100));
         //this.ball.body.velocity.y = (Ball._VELOCIDADY * factorDificultad);
         this.ball.body.velocity.x = Ball._VELOCIDADX * (-1 ) * factorDificultad;
@@ -70,6 +72,14 @@ Ball.Game.prototype = {
 	    	// COLISIONES
 		//this.physics.arcade.collide(this.ball, this.borderGroup, this.wallCollision, null, this);
 		
+	},
+	function checkPos (ball) {
+
+    if (ball.x > 640)
+    {
+        rat.ball = -100;
+    }
+
 	},
 	//****************************************************************************************************
 	wallCollision: function() {
