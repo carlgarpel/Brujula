@@ -145,10 +145,11 @@ Ball.Game.prototype = {
     
     function onError() {
         console.log('onError!');
+        //alert ("onError");
     }
 
     function onSuccess(datosAceleracion){
-      this	.detectaAgitacion(datosAceleracion);
+      this.detectaAgitacion(datosAceleracion);
       this.registraDireccion(datosAceleracion);
     }
 
