@@ -60,7 +60,7 @@ Ball.Game.prototype = {
 		    document.addEventListener('deviceready', function() {
    	     		Ball._DISPOSITIVO=true;
         		//alert("El dispisitivo está listo");
-        		//Ball.vigilaSensores();
+        		Ball.vigilaSensores();
 				}, false);
    			};
    			
