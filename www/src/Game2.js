@@ -101,6 +101,8 @@ Ball.Game.prototype = {
         	this.recomienza();
         };
         ball.y = 10;
+       ball.angle = 90 * (Math.round(Math.random()*(5-1)+parseInt(1)));
+
 
     }
 
@@ -110,6 +112,7 @@ Ball.Game.prototype = {
 		if (Ball._GIRO >= 4) {
 			ball.x = 10;
 		 	ball.y = 10;
+		 	ball.angle = 90 *(Math.round(Math.random()*(5-1)+parseInt(1)));
 		 	this.hole.x +=  50;
 		 	Ball._CAIDAS+=1;
 		}
