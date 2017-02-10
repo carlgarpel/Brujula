@@ -2,12 +2,12 @@
 Ball.Game = function(game) {};
 
 
+	
 	//Game.vigilaSensores(); 
 
 //function inicio() {
 Ball.Game.prototype = {
 
-	
 
 	create: function() {
 
@@ -51,7 +51,7 @@ Ball.Game.prototype = {
 		this.borderGroup.setAll('body.immovable', true);
 
 		//****************************************************************************
-		//this.inicio();
+		alert("Create");
 	},
 
 
@@ -67,7 +67,7 @@ Ball.Game.prototype = {
 		//this.ball.body.velocity.x +=(3 * (+1)); ; //this.movementForce;
 		this.physics.arcade.collide(this.ball, this.borderGroup, this.wallCollision, null, this);
 		//alert(velocidadX);
-		
+		//alert("Update");
 		
 	},
 	//****************************************************************************************************
@@ -77,12 +77,12 @@ Ball.Game.prototype = {
 		//if("vibrate" in window.navigator) {window.navigator.vibrate(100);}
 		//alert("ffff");
 		
-		this.ball.body.destroy();
+		//this.ball.body.destroy();
 		//**************BRUJULA
 
 
    	 if (Ball._DISPOSITIVO) {
-       
+     
 
         navigator.compass.getCurrentHeading(
             function (posicion) {
@@ -123,22 +123,7 @@ Ball.Game.prototype = {
 
 		
 	},
-	inicio: function() {
-
-		alert("Inicio");
-
-		if ('addEventListener' in document) {
-		    document.addEventListener('deviceready', function() {
-   	     		Ball._DISPOSITIVO=true;
-        		alert("El dispisitivo está listo");
-
-        		
-        		
-        		
-				}, false);
-   			};
-   			
-	},
+	
 
 	girarTapon: function() {
 		this.ball.angle+=90;
@@ -186,4 +171,22 @@ Ball.Game.prototype = {
 
 
 };
+
+
+
+
+		alert("Inicio");
+
+		if ('addEventListener' in document) {
+		    document.addEventListener('deviceready', function() {
+   	     		Ball._DISPOSITIVO=true;
+        		alert("El dispisitivo está listo");
+
+        		
+        		
+        		
+				}, false);
+   		};
+   			
+
 
