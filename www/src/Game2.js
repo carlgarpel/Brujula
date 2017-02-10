@@ -51,6 +51,12 @@ Ball.Game.prototype = {
 		//Para que los sprite's se paren al tropezar con los bordes.
 		this.borderGroup.setAll('body.immovable', true);
 
+
+		this.hole = this.add.sprite(130, Ball._HEIGHT-12, 'hole');
+		this.physics.enable(this.hole, Phaser.Physics.ARCADE);
+		this.hole.anchor.set(0.5);
+		this.hole.body.setSize(2, 2);
+
 		//****************************************************************************
 		//alert("Create");
 	},
@@ -68,6 +74,8 @@ Ball.Game.prototype = {
 
 	    this.ball.body.velocity.y += 0.5; //this.velocidadY; //this.movementForce;
 		
+	    this.physics.arcade.overlap(this.ball, this.hole, this.finishLevel, null, this);
+
 	    this.checkPos(this.ball);
 	    	// COLISIONES
 		//this.physics.arcade.collide(this.ball, this.borderGroup, this.wallCollision, null, this);
@@ -85,9 +93,23 @@ Ball.Game.prototype = {
     };
     if (ball.y > Ball._HEIGHT-12)
     {
+       
+        Ball._CAIDAS += 1;
+        if (Ball._CAIDAS>4)
+        {
+        	this.recomienza();
+        };
         ball.y = 10;
+
     }
 
+	},
+
+	finishLevel: function(ball) {
+		 ball.x = 10;
+		 ball.y = 10;
+		 this.hole.x +=  50;
+		 Ball._CAIDAS+=1;
 	},
 	//****************************************************************************************************
 	wallCollision: function() {

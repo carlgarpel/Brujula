@@ -3,7 +3,8 @@ var Ball = {
 	_HEIGHT: 640,
 	_DISPOSITIVO: false,
 	_VELOCIDADX: 0,
-	_VELOCIDADY: 0
+	_VELOCIDADY: 0,
+	_CAIDAS: 0
 
 };
 Ball.Boot = function(game) {};
