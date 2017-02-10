@@ -59,8 +59,8 @@ Ball.Game.prototype = {
 		if ('addEventListener' in document) {
 		    document.addEventListener('deviceready', function() {
    	     		Ball._DISPOSITIVO=true;
-        		alert("El dispisitivo está listo");
-        		Ball.vigilaSensores();
+        		//alert("El dispisitivo está listo");
+        		//Ball.vigilaSensores();
 				}, false);
    			};
    			
@@ -137,6 +137,7 @@ Ball.Game.prototype = {
 	girarTapon: function() {
 		this.ball.angle+=90;
 		if(this.taponCaido)  this.ball1.angle+=90;
+		alert("Control: " + Ball._DISPOSITIVO);
 	},
 
 	//****************************************************
