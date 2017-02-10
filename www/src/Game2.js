@@ -31,6 +31,7 @@ Ball.Game.prototype = {
 
 		this.ball.body.gravity.x =  6;
 		this.ball.angle=90;
+		Ball._GIRO = 1;
 
 		this.ball.body.bounce.set(0.8);
 
@@ -106,10 +107,18 @@ Ball.Game.prototype = {
 	},
 
 	finishLevel: function(ball) {
-		 ball.x = 10;
-		 ball.y = 10;
-		 this.hole.x +=  50;
-		 Ball._CAIDAS+=1;
+		if (Ball._GIRO >= 4) {
+			ball.x = 10;
+		 	ball.y = 10;
+		 	this.hole.x +=  50;
+		 	Ball._CAIDAS+=1;
+		}
+		else {
+			ball.x = ball.x + 30;
+		 	
+		 	
+		}
+		
 	},
 	//****************************************************************************************************
 	wallCollision: function() {
@@ -169,7 +178,10 @@ Ball.Game.prototype = {
 
 	girarTapon: function() {
 		this.ball.angle+=90;
-		if(this.taponCaido)  this.ball1.angle+=90;
+		Ball._GIRO += 1;
+
+
+
 		//alert("Control: " + Ball._DISPOSITIVO);
 	},
 
