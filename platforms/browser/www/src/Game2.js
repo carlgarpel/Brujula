@@ -23,17 +23,19 @@ Ball.Game.prototype = {
 
 
 		this.ball = this.add.sprite(130, 130, 'ball');
-		this.ball.anchor.set(0.5);
+		this.ball.anchor.set(0.5, 1);
 
 		this.physics.enable(this.ball, Phaser.Physics.ARCADE);
 
  		//this.game.physics.arcade.enable(this.ball);
 
-		this.ball.body.gravity.x =  6;
+	    //this.ball.body.gravity.x =  6;
+		this.ball.body.gravity.set(180, 6);
+
 		this.ball.angle=90;
 		Ball._GIRO = 1;
 
-		this.ball.body.bounce.set(2);
+		this.ball.body.bounce.set(0,8);
 
 	
 		//Grupo de bordes **********************************************************
@@ -53,13 +55,18 @@ Ball.Game.prototype = {
 		//this.borderGroup.setAll('body.immovable', true);
 
 
-		this.hole = this.add.sprite(188, Ball._HEIGHT-260, 'hole');
+		this.hole = this.add.sprite(130, Ball._HEIGHT-322, 'hole');
 		this.physics.enable(this.hole, Phaser.Physics.ARCADE);
-		this.hole.anchor.set(0.5,1);
+		this.hole.anchor.set(0.5,0);
 		//this.hole.body.setSize(0.5, 0);
     this.hole.body.immovable=true;
 
-    this.botella= this.add.sprite(130, Ball._HEIGHT-320, 'botella');
+    this.botella = this.add.sprite(130, Ball._HEIGHT - 320, 'botella');
+    this.botella.anchor.set(0.5, 0);
+
+	
+       
+
     //this.botella.body.collideWorldBounds = true;
     //this.botella.body.immovable = true;
 
@@ -126,7 +133,7 @@ Ball.Game.prototype = {
 	finishLevel: function(ball) {
    // finishLevel: function() {
 
-		if (this.ball.angle != 0) {
+	    if (this.ball.angle != 0 && this.ball.y != this.hole.y - 10 && this.ball.x != this.hole.x) {
 			
    /*  this.ball.body.bounce.set(2);
      this.ball.x +=30;
@@ -146,14 +153,22 @@ Ball.Game.prototype = {
 		}
 		else {
 			
-       alert("acierto");
+      // alert("acierto");
        this.ball.x = 10;
        this.ball.y = 10;
         var giros = Math.round(Math.random()*(5-1)+parseInt(1));
         this.ball.angle = 90 * giros;
       // this.hole.x +=  50;
         Ball._CAIDAS+=1;
-		 	
+	        this.tapon1 = this.add.sprite(130, Ball._HEIGHT - 320, 'tapon1');
+	        //this.tapon1 = this.add.sprite(130, Ball._HEIGHT +5, 'tapon1');
+	        this.tapon1.anchor.set(0.5, 0);
+	        this.botella2 = this.add.sprite(260, Ball._HEIGHT - 320, 'botella2');
+	        this.botella2.anchor.set(0.5, 0);
+	        this.hole.x = 260;
+	        this.hole.y = this.botella2.y;
+
+	        
 		 	
 		}
 		

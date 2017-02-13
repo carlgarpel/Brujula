@@ -1,0 +1,27 @@
+{
+  "name": "gamecargarpel",
+  "description": "Juego demostracion de las capacidades del acelerometro",
+  "main": "www/index.html",
+  "authors": [
+    "Carlgarpel"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "ecosystem:phonegap",
+    "ecosystem:cordova",
+    "cordova:template",
+    "phonegap:template"
+  ],
+  "homepage": "www/index.html",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.2"
+  }
+}
