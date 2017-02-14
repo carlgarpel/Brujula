@@ -1,20 +1,12 @@
-//game-pruebas
+//game: La lógica del juego.
 Ball.Game = function(game) {};
-
-
-	
-	//Game.vigilaSensores(); 
-
-//function inicio() {
+//Mediante prototype se añaden métodos a la función Ball.Game
 Ball.Game.prototype = {
 
-
 	create: function() {
-
 	
-		this.taponCaido=false;
-	
-
+		// Convierto el fondo de la pantalla en un botón que al ser pulsado se hace 
+		//girar ball (El taón)
 		this.buttonFondo = this.add.button(0, 0, 'screen-bg', this.girarTapon, this);
 		//**************************************************************************
 
@@ -22,36 +14,20 @@ Ball.Game.prototype = {
 		this.physics.startSystem(Phaser.Physics.ARCADE);
 
 
-		this.ball = this.add.sprite(130, 130, 'ball');
-		this.ball.anchor.set(0.5);
+		this.ball = this.add.sprite(aleatorio(Ball._WIDTH -BalL._WIDTH_TAPON), BalL._WIDTH_TAPON, 'ball');
+		this.ball.anchor.set(0.5, 1);
 
 		this.physics.enable(this.ball, Phaser.Physics.ARCADE);
 
- 		//this.game.physics.arcade.enable(this.ball);
+ 		
 
 		this.ball.body.gravity.x =  6;
-		this.ball.angle=90;
-		Ball._GIRO = 1;
+		this.ball.angle=90 * aleatorio(4,1);
+		
 
 		this.ball.body.bounce.set(2);
 
 	
-		//Grupo de bordes **********************************************************
-		this.borderGroup = this.add.group();
-
-		//Si es verdad todos los sprites creados con #create o #createMulitple 
-		//tendrán un cuerpo creado la física sobre ellos. 
-		//Cambiar el tipo de cuerpo con #physicsBodyType.
-		this.borderGroup.enableBody = true;
-		this.borderGroup.physicsBodyType = Phaser.Physics.ARCADE;
-
-		this.borderGroup.create(0, 2, 'border-horizontal'); //2
-		this.borderGroup.create(0, Ball._HEIGHT-12, 'border-horizontal'); //0
-		this.borderGroup.create(0, 0, 'border-vertical'); //0
-		this.borderGroup.create(Ball._WIDTH-2, 0, 'border-vertical'); //-2
-		//Para que los sprite's se paren al tropezar con los bordes.
-		//this.borderGroup.setAll('body.immovable', true);
-
 
 		this.hole = this.add.sprite(188, Ball._HEIGHT-260, 'hole');
 		this.physics.enable(this.hole, Phaser.Physics.ARCADE);
@@ -60,11 +36,7 @@ Ball.Game.prototype = {
     this.hole.body.immovable=true;
 
     this.botella= this.add.sprite(130, Ball._HEIGHT-320, 'botella');
-    //this.botella.body.collideWorldBounds = true;
-    //this.botella.body.immovable = true;
-
-		//****************************************************************************
-		//alert("Create");
+    
 	},
 
 
@@ -107,12 +79,9 @@ Ball.Game.prototype = {
         	this.recomienza();
         };
         ball.y = 10;
-        var giros = Math.round(Math.random()*(5-1)+parseInt(1));
+        var giros = aleatorio(5,1);
         ball.angle = 90 * giros;
  
-      /*  for (i = 0; i < giros; i++) { 
-    		 Ball._GIRO+=i;
-    		 if (Ball._GIRO > 4) Ball._GIRO = 1;*/
 
 		};
 
@@ -121,23 +90,19 @@ Ball.Game.prototype = {
 
     },
 
+    aleatorio: function (superior, inferior) {
+    	return Math.round(Math.random()*(superior-inferior)+parseInt(inferior));
+
+    },
+
 
 
 	finishLevel: function(ball) {
-   // finishLevel: function() {
+  
 
 		if (this.ball.angle != 0) {
 			
-   /*  this.ball.body.bounce.set(2);
-     this.ball.x +=30;
-		 	*/
-		
  
-      /*  for (i = 0; i < giros; i++) { 
-    		 Ball._GIRO+=i;
-    		 if (Ball._GIRO > 4) Ball._GIRO = 1;
-
-		};*/
 
     this.ball.gravity= 12;
     this.ball.x+=20;
@@ -151,7 +116,7 @@ Ball.Game.prototype = {
        this.ball.y = 10;
         var giros = Math.round(Math.random()*(5-1)+parseInt(1));
         this.ball.angle = 90 * giros;
-      // this.hole.x +=  50;
+    
         Ball._CAIDAS+=1;
 		 	
 		 	
@@ -160,135 +125,51 @@ Ball.Game.prototype = {
 	},
 	//****************************************************************************************************
 	wallCollision: function() {
-
-		//if(this.audioStatus) {this.bounceSound.play();}
-		// Vibration API
-		//if("vibrate" in window.navigator) {window.navigator.vibrate(100);}
-		//alert("ffff");
-		
-		//this.ball.body.destroy();
-		//**************BRUJULA
-
-
-  /* 	 if (Ball._DISPOSITIVO) {
-     
-
-        navigator.compass.getCurrentHeading(
-            function (posicion) {
-                var gradosAbsolutos;
-
-                if (posicion.magneticHeading > 180) {
-                    gradosAbsolutos = 360 - posicion.magneticHeading;
-                } else {
-                    gradosAbsolutos = posicion.magneticHeading;
-                }
-
-                if ((gradosAbsolutos) < 1) {
-                    navigator.notification.alert("¡Enhorabuena! ¡Has encontrado la posición norte con una precisión del " + (100 - gradosAbsolutos).toString() + "%!");
-                } else {
-                    navigator.notification.alert("¡Fallaste! ¡Estás a " + Math.round(gradosAbsolutos).toString() + " grados del norte!");
-                }
-
-               
-            },
-            function (posicionError) {
-                switch (posicionError.code) {
-                case CompassError.COMPASS_INTERNAL_ERR:
-                    navigator.notification.alert("Error en la brújula");
-                    break;
-                case CompassError.COMPASS_NOT_SUPPORTED:
-                    navigator.notification.alert("No hay brújula");
-                    break;
-                default:
-                    navigator.notification.alert("Error desconocido");
-                    break;
-                }
-            }
-        );
-    	}*/
-
-
-		//*********************
-
-		
+		// No se precisa de ninguna acción.
 	},
 	
-
+	// Función invocada por el usuario al pulsar en la pantalla.
 	girarTapon: function() {
+		//Aumentamos en un ángulo de 90º el giro del Tapón.
 		this.ball.angle+=90;
-    //alert("Angulo: " + this.ball.angle);
-		Ball._GIRO += 1;
-		if (Ball._GIRO > 4) Ball._GIRO = 1;
-
- 
-
-		//alert("Control: " + Ball._DISPOSITIVO);
-	},
+    },
 
 	//****************************************************
 	
-
-  detectaAgitacion: function(datosAceleracion){
-    var agitacionX = datosAceleracion.x > 10;
-    var agitacionY = datosAceleracion.y > 10;
-
-    if (agitacionX || agitacionY){
-      setTimeout(this.recomienza, 1000);
-    }
-  },
-
-  recomienza: function(){
-    document.location.reload(true);
-  },
-
-  registraDireccion: function(){
-    Ball._VELOCIDADX = datosAceleracion.x ;
-    Ball._VELOCIDADY = datosAceleracion.y ;
-     navigator.notification.alert("X " + Ball._VELOCIDADX );
-  // Ball._VELOCIDADX = 30 ;
-  //  Ball._VELOCIDADY = datosAceleracion.y ;
-
-    // navigator.notification.alert("velocidadY " + Ball._VELOCIDADY);
-  }
-
+  	// cuando cae el Tapón 5 veces se reinicia la partida.	
+  	recomienza: function(){
+    	document.location.reload(true);
+  	}
 
 };
+//****************FIN DE LAS FUNCIONES AÑADIDAS A GAME*****************************
 
-
-
-
-		//alert("Inicio");
-
-		if ('addEventListener' in document) {
-		    document.addEventListener('deviceready', function() {
-   	     		Ball._DISPOSITIVO=true;
-        		//alert("El dispisitivo está listo... INICIO");
-        		vigilaSensores();
-        		
-        		
-        		
-				}, false);
-   		};
-   			
+// ESTO ES LO PRIMERO QUE SE EJECUTA ***********************************
+// Evento que verifica que el dispositivo esté preparado
+if ('addEventListener' in document) {
+    document.addEventListener('deviceready', function() {
+   		vigilaSensores(); //Activa el control del acelerómetro.
+		}, false);
+   	};
+  //Cuando el dispositivo esté ready ************************************* 
   function vigilaSensores(){
-    
+    // Accede al acelerómetro
    function onError() {
         console.log('onError!');
-        navigator.notification.alert("X error " + Ball._VELOCIDADX );
-        //alert ("onError");
+        navigator.notification.alert("X error ");
     };
 
     function onSuccess(datosAceleracion){
-     // this.detectaAgitacion(datosAceleracion);
- 	//navigator.notification.alert("X  " + datosAceleracion.x );
+    
  	  Ball._VELOCIDADX = datosAceleracion.x ;
-    Ball._VELOCIDADY = datosAceleracion.y ;
-      //this.registraDireccion(datosAceleracion);
-
-       
+      Ball._VELOCIDADY = datosAceleracion.y ;
+    
     };
-     
+     //Cada 10 milisegundo comprueba el acelerómetro
+     // si el dispositivo es rady ejecuta onSuccess y registra las valores de x, y			
      navigator.accelerometer.watchAcceleration(onSuccess, onError,{ frequency: 10 });
-     //navigator.notification.alert("hay acelerometro EN VIGILA SENSORES");
-  };
 
+  };
+//Fin vigila sensores ************************************* 
+//Phaser se encarga de controlar el flujo de la aplicación, puesto que 
+//en Howto.js dijimos this.game.state.start('Game');
