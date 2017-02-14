@@ -1,0 +1,1 @@
+E:\brujula\Brujula\plugins\cordova-plugin-globalization\src\windows\GlobalizationProxy\GlobalizationProxy\obj\Debug\GlobalizationProxy.csprojResolveAssemblyReference.cache
