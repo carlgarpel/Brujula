@@ -18,6 +18,12 @@ Ball.Preloader.prototype = {
 		this.load.image('botella2', 'img/Botella2.png');
 		this.load.image('botella3', 'img/Botella3.png');
 
+		//Tapones de cierre
+		this.load.image('cierre1', 'img/taponcierre.png');
+		this.load.image('cierre2', 'img/taponcierre2.png');
+		this.load.image('cierre3', 'img/taponcierre2.png');
+		
+
 		
 		//Adorno primera pantalla
 		this.load.image('title', 'img/title.png');

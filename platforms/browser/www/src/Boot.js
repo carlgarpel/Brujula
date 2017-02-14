@@ -9,7 +9,8 @@ var Ball = {
 	_VELOCIDADY: 0,
 	_CAIDAS: 0,
 	_GIRO: 0,
-	_ACIERTOS: 0
+	_ACIERTOS: 0,
+	_NUEVAFASE: false
 
 };
 Ball.Boot = function(game) {};

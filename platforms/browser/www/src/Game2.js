@@ -74,7 +74,7 @@ Ball.Game.prototype = {
         //this.ball.body.velocity.y = (Ball._VELOCIDADY * factorDificultad);
         this.ball.body.velocity.x = Ball._VELOCIDADX * (-1 ) * factorDificultad;
 
-      this.ball.body.velocity.y += 0.5; //this.velocidadY; //this.movementForce;
+      this.ball.body.velocity.y += 1; //this.velocidadY; //this.movementForce;
     
      // this.physics.arcade.overlap(this.ball, this.hole, this.finishLevel, null, this);
      this.physics.arcade.overlap(this.ball, this.hole, this.finishLevel, null, this);
@@ -99,69 +99,59 @@ Ball.Game.prototype = {
         Ball._CAIDAS += 1;
         if (Ball._CAIDAS>4)
         {
+           navigator.notification.alert("¡Ha gastado los cinco corchos sin tapar todas las botellas!");
+     
           this.recomienza();
         };
         ball.y = 1;
         ball.x= this.aleatorio(Ball._WIDTH - Ball._WIDTHTAPON, Ball._WIDTHTAPON);
         var giros = this.aleatorio(5,1);
         ball.angle = 90 * giros;
- 
-
-    };
-
-        
-
-
-    },
-
+     };
+   },
+   // un número aleatorio entre el número inferior y superior
     aleatorio: function (superior, inferior) {
       return Math.round(Math.random()*(superior-inferior)+parseInt(inferior));
 
     },
 
-
-
+//Cuando se complenten 3 aciertos se pasará al siguiente nivel
   finishLevel: function(ball) {
   
-
-    if (this.ball.angle != 0) {
-      
- 
-
-    this.ball.gravity= 12;
-    this.ball.x+=20;
-     
-      
-    }
+    if (this.ball.angle != 0 && this.ball.y != this.hole.y-3) {
+        this.ball.x+=20;
+      }
     else {
-      
-       //alert("acierto");
        Ball._ACIERTOS +=1;
-
        this.aciertosText.text="Aciertos: " + Ball._ACIERTOS;
-
        this.ball.x = 10;
        this.ball.y = 10;
-        var giros = Math.round(Math.random()*(5-1)+parseInt(1));
-        this.ball.angle = 90 * giros;
-    
+       var giros = Math.round(Math.random()*(5-1)+parseInt(1));
+       this.ball.angle = 90 * giros;
+       Ball._CAIDAS+=1;
 
-        Ball._CAIDAS+=1;
-        //alert(Ball._ACIERTOS);
-        if (Ball._ACIERTOS===1) {
-           this.botella2= this.add.sprite(250, Ball._HEIGHT-190, 'botella2');
-           this.botella2.anchor.set(0.5,0);
-       this.hole.x= this.botella2.x;  
-         this.hole.y= this.botella2.y + 15;         
+
+    if (Ball._ACIERTOS===1) {
+        this.botella2= this.add.sprite(250, Ball._HEIGHT-190, 'botella2');
+        this.botella2.anchor.set(0.5,0);
+        this.hole.x= this.botella2.x;  
+        this.hole.y= this.botella2.y + 15;  
+        this.cierre1= this.add.sprite(this.botella.x+54, this.botella.y-2, 'cierre1');
+        this.cierre1.anchor.set(0.5,0);       
         }
-        else if (Ball._ACIERTOS===2) {
-
-       this.botella3= this.add.sprite(100, Ball._HEIGHT-160, 'botella3');
-           this.botella3.anchor.set(0.5,0);
-       this.hole.x= this.botella3.x;  
-         this.hole.y= this.botella3.y + 15;   
-    }
+    else if (Ball._ACIERTOS===2) {
+        this.botella3= this.add.sprite(100, Ball._HEIGHT-160, 'botella3');
+        this.botella3.anchor.set(0.5,0);
+        this.hole.x= this.botella3.x;  
+        this.hole.y= this.botella3.y + 15;   
+        this.cierre2= this.add.sprite(this.botella2.x+6, this.botella2.y-5, 'cierre2');
+        this.cierre2.anchor.set(0.5,0);  
+        }
     else {
+       // Ball._NUEVAFASE = true;
+        this.cierre3= this.add.sprite(this.botella3.x+4, this.botella3.y-5, 'cierre3');
+        this.cierre3.anchor.set(0.5,0); 
+       navigator.notification.alert("¡Enhorabuena, ha superado esta primera fase!");
       this.recomienza();
     }
         }
