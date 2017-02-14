@@ -15,6 +15,8 @@ Ball.Preloader.prototype = {
 
 		//Adornos del juego
 		this.load.image('botella', 'img/Botella1.png');
+		this.load.image('botella2', 'img/Botella2.png');
+		this.load.image('botella3', 'img/Botella3.png');
 
 		
 		//Adorno primera pantalla

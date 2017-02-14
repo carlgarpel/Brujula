@@ -24,21 +24,23 @@ Ball.Game.prototype = {
 		this.ball.body.gravity.x =  6;
 		this.ball.angle=90 * this.aleatorio(4,1);
 		
-
-		this.ball.body.bounce.set(2);
+		//rebote
+		this.ball.body.bounce.set(1);
 		Ball._player = this.ball;
 
 		/* this.keys = this.game.input.keyboard.createCursorKeys();
 		this.movementForce = 300; */
 	
 
-		this.hole = this.add.sprite(188, Ball._HEIGHT-260, 'hole');
+		this.hole = this.add.sprite(188, Ball._HEIGHT-280, 'hole');
 		this.physics.enable(this.hole, Phaser.Physics.ARCADE);
-		this.hole.anchor.set(0.5,1);
-		//this.hole.body.setSize(0.5, 0);
+		this.hole.anchor.set(0.5);
+		this.hole.body.setSize(0.5, 0);
+
     this.hole.body.immovable=true;
 
     this.botella= this.add.sprite(130, Ball._HEIGHT-320, 'botella');
+    
     
 	},
 
@@ -75,8 +77,7 @@ Ball.Game.prototype = {
 	   // this.physics.arcade.overlap(this.ball, this.hole, this.finishLevel, null, this);
      this.physics.arcade.overlap(this.ball, this.hole, this.finishLevel, null, this);
     // this.physics.arcade.collide(this.ball, this.hole, this.finishLevel, null, this);
-
-	    this.checkPos(this.ball);
+     this.checkPos(this.ball);
 	   
 		
 	},
@@ -132,16 +133,33 @@ Ball.Game.prototype = {
 		}
 		else {
 			
-       alert("acierto");
+       //alert("acierto");
+       Ball._ACIERTOS +=1;
        this.ball.x = 10;
        this.ball.y = 10;
         var giros = Math.round(Math.random()*(5-1)+parseInt(1));
         this.ball.angle = 90 * giros;
     
+
         Ball._CAIDAS+=1;
-		 	
-		 	
+        //alert(Ball._ACIERTOS);
+        if (Ball._ACIERTOS===1) {
+	         this.botella2= this.add.sprite(250, Ball._HEIGHT-190, 'botella2');
+        	 this.botella2.anchor.set(0.5,0);
+		 	 this.hole.x= this.botella2.x;	
+		  	 this.hole.y= this.botella2.y + 15;        	
+        }
+        else if (Ball._ACIERTOS===2) {
+
+		 	 this.botella3= this.add.sprite(100, Ball._HEIGHT-160, 'botella3');
+        	 this.botella3.anchor.set(0.5,0);
+		 	 this.hole.x= this.botella3.x;	
+		  	 this.hole.y= this.botella3.y + 15;   
 		}
+		else {
+			this.recomienza();
+		}
+        }
 		
 	},
 	//****************************************************************************************************
