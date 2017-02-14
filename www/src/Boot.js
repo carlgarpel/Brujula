@@ -2,8 +2,8 @@ var Ball = {
 	//Variables globales
 	_WIDTH: 360,
 	_HEIGHT: 640,
-	_WIDTH_TAPON: 32,
-	_HEIGHT_TAPON: 52,
+	_WIDTHTAPON: 32,
+	_HEIGHTTAPON: 52,
 	_DISPOSITIVO: false,
 	_VELOCIDADX: 0,
 	_VELOCIDADY: 0,

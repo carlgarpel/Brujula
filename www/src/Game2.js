@@ -14,7 +14,7 @@ Ball.Game.prototype = {
 		this.physics.startSystem(Phaser.Physics.ARCADE);
 
 
-		this.ball = this.add.sprite(aleatorio(Ball._WIDTH -BalL._WIDTH_TAPON), BalL._WIDTH_TAPON, 'ball');
+		this.ball = this.add.sprite(this.aleatorio(Ball._WIDTH - Ball._WIDTHTAPON, Ball._WIDTHTAPON), Ball._WIDTHTAPON, 'ball');
 		this.ball.anchor.set(0.5, 1);
 
 		this.physics.enable(this.ball, Phaser.Physics.ARCADE);
@@ -22,11 +22,14 @@ Ball.Game.prototype = {
  		
 
 		this.ball.body.gravity.x =  6;
-		this.ball.angle=90 * aleatorio(4,1);
+		this.ball.angle=90 * this.aleatorio(4,1);
 		
 
 		this.ball.body.bounce.set(2);
+		Ball._player = this.ball;
 
+		/* this.keys = this.game.input.keyboard.createCursorKeys();
+		this.movementForce = 300; */
 	
 
 		this.hole = this.add.sprite(188, Ball._HEIGHT-260, 'hole');
@@ -43,6 +46,23 @@ Ball.Game.prototype = {
 
 	//UPDATE *********************************************************************************************
 	update: function() {
+  if (this.game.input.keyboard.isDown(Phaser.Keyboard.LEFT))
+    {
+        this.ball.x -= 4;
+    }
+    else if (this.game.input.keyboard.isDown(Phaser.Keyboard.RIGHT))
+    {
+       this.ball.x += 4;
+    }
+		
+    if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP))
+    {
+        this.girarTapon();
+    }
+    else if (this.game.input.keyboard.isDown(Phaser.Keyboard.DOWN))
+    {
+       this.girarTapon();
+    }
 
 		//this.physics.arcade.collide(this.botella, this.ball);
 
@@ -78,8 +98,9 @@ Ball.Game.prototype = {
         {
         	this.recomienza();
         };
-        ball.y = 10;
-        var giros = aleatorio(5,1);
+        ball.y = 1;
+        ball.x= this.aleatorio(Ball._WIDTH - Ball._WIDTHTAPON, Ball._WIDTHTAPON);
+        var giros = this.aleatorio(5,1);
         ball.angle = 90 * giros;
  
 
