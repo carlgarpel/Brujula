@@ -41,7 +41,9 @@ Ball.Game.prototype = {
 
     this.botella= this.add.sprite(130, Ball._HEIGHT-320, 'botella');
     
-    
+    this.fontBig = { font: "24px Arial", fill: "#e4ffef" };
+    this.aciertosText = this.game.add.text(15, 15, "Aciertos: "+ Ball._ACIERTOS, this.fontBig);
+
 	},
 
 
@@ -135,6 +137,9 @@ Ball.Game.prototype = {
 			
        //alert("acierto");
        Ball._ACIERTOS +=1;
+
+       this.aciertosText.text="Aciertos: " + Ball._ACIERTOS;
+
        this.ball.x = 10;
        this.ball.y = 10;
         var giros = Math.round(Math.random()*(5-1)+parseInt(1));
