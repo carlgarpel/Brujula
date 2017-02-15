@@ -99,9 +99,9 @@ Ball.Game.prototype = {
         Ball._CAIDAS += 1;
         if (Ball._CAIDAS>4)
         {
-           navigator.notification.alert("¡Ha gastado los cinco corchos sin tapar todas las botellas!");
-     
-          this.recomienza();
+           //navigator.notification.alert("¡Ha gastado los cinco corchos sin tapar todas las botellas!");
+          alert("¡Ha gastado los cinco corchos sin tapar todas las botellas!");
+          setTimeout(this.recomienza(), 3000);
         };
         ball.y = 1;
         ball.x= this.aleatorio(Ball._WIDTH - Ball._WIDTHTAPON, Ball._WIDTHTAPON);
@@ -136,7 +136,7 @@ Ball.Game.prototype = {
         this.botella2.anchor.set(0.5,0);
         this.hole.x= this.botella2.x;  
         this.hole.y= this.botella2.y + 15;  
-        this.cierre1= this.add.sprite(this.botella.x+54, this.botella.y-2, 'cierre1');
+        this.cierre1= this.add.sprite(this.botella.x+54, this.botella.y-8, 'cierre1');
         this.cierre1.anchor.set(0.5,0);       
         }
     else if (Ball._ACIERTOS===2) {
@@ -144,15 +144,17 @@ Ball.Game.prototype = {
         this.botella3.anchor.set(0.5,0);
         this.hole.x= this.botella3.x;  
         this.hole.y= this.botella3.y + 15;   
-        this.cierre2= this.add.sprite(this.botella2.x+6, this.botella2.y-5, 'cierre2');
+        this.cierre2= this.add.sprite(this.botella2.x+1, this.botella2.y-8, 'cierre2');
         this.cierre2.anchor.set(0.5,0);  
         }
     else {
        // Ball._NUEVAFASE = true;
-        this.cierre3= this.add.sprite(this.botella3.x+4, this.botella3.y-5, 'cierre3');
+        this.cierre3= this.add.sprite(this.botella3.x+2, this.botella3.y-8, 'cierre3');
         this.cierre3.anchor.set(0.5,0); 
-       navigator.notification.alert("¡Enhorabuena, ha superado esta primera fase!");
-      this.recomienza();
+       //navigator.notification.alert("¡Enhorabuena, ha superado esta primera fase!");
+        setTimeout(alert("¡Enhorabuena, ha superado esta primera fase!"), 1000);
+        setTimeout(this.recomienza(), 2000);
+      
     }
         }
     
@@ -190,7 +192,8 @@ if ('addEventListener' in document) {
     // Accede al acelerómetro
    function onError() {
         console.log('onError!');
-        navigator.notification.alert("X error ");
+       // navigator.notification.alert("X error ");
+       alert("X error ");
     };
 
     function onSuccess(datosAceleracion){
